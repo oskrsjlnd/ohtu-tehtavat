@@ -5,6 +5,12 @@ Suite Teardown  Close Browser
 Test Setup  Create User And Go To Login Page
 
 *** Test Cases ***
+Login With Nonexistent Username
+    Set Username  koira
+    Set Password  koiranen
+    Submit Credentials
+    Login Should Fail With Message  Invalid username or password
+     
 Login With Correct Credentials
     Set Username  kalle
     Set Password  kalle123
