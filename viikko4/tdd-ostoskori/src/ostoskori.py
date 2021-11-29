@@ -36,7 +36,13 @@ class Ostoskori:
         # poistaa tuotteen
         for i in self.tuotteet:
             if i.tuotteen_nimi() == poistettava.nimi():
+                if i.lukumaara() == 1:
+                    self.tuotteet.remove(i)
+                    self.kori_hinta -= poistettava.hinta()
+                    return
                 i.muuta_lukumaaraa(-1)
+                self.kori_hinta -= poistettava.hinta()
+                break
 
     def tyhjenna(self):
         pass
