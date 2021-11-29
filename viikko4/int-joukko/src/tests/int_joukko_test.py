@@ -106,8 +106,6 @@ class TestIntJoukko(unittest.TestCase):
         toka = self.tee_joukko(2, 3, 4)
 
         tulos = IntJoukko.erotus(eka, toka)
-        vastauksen_luvut = tulos.to_int_list()
+        odotettu = {1, 5, 6}
 
-        odotettu = [1, 5, 6]
-
-        self.assertListEqual(sorted(vastauksen_luvut), odotettu)
+        self.assertSetEqual(tulos.ljono, odotettu)
