@@ -1,23 +1,23 @@
 class IntJoukko:
-    def __init__(self, kapasiteetti=5, kasvatuskoko=5):
+    def __init__(self):
         self.ljono = set()
         self.alkioiden_lkm = len(self.ljono)
 
-    def kuuluu(self, n):
-        if n in self.ljono:
+    def kuuluu(self, var):
+        if var in self.ljono:
             return True
         return False
 
-    def lisaa(self, n):
-        if not self.kuuluu(n):
-            self.ljono.add(n)
+    def lisaa(self, var):
+        if not self.kuuluu(var):
+            self.ljono.add(var)
             self.alkioiden_lkm += 1
             return True
         return False
 
-    def poista(self, n):
-        if n in self.ljono:
-            self.ljono.remove(n)
+    def poista(self, var):
+        if var in self.ljono:
+            self.ljono.remove(var)
             self.alkioiden_lkm -= 1
             return True
         return False
@@ -32,21 +32,21 @@ class IntJoukko:
         return taulu
 
     @staticmethod
-    def yhdiste(a, b):
+    def yhdiste(first, second):
         res = IntJoukko()
-        res.ljono = a.ljono.union(b.ljono)
+        res.ljono = first.ljono.union(second.ljono)
         return res
 
     @staticmethod
-    def leikkaus(a, b):
+    def leikkaus(first, second):
         res = IntJoukko()
-        res.ljono = a.ljono.intersection(b.ljono)
+        res.ljono = first.ljono.intersection(second.ljono)
         return res
 
     @staticmethod
-    def erotus(a, b):
+    def erotus(first, second):
         res = IntJoukko
-        res.ljono = a.ljono.difference(b.ljono)
+        res.ljono = first.ljono.difference(second.ljono)
         return res
 
     def __str__(self):
@@ -55,5 +55,5 @@ class IntJoukko:
         res = "{"
         for i in self.ljono:
             res += str(i) + ", "
-        res = res[0:-2]+"}" 
+        res = res[0:-2]+"}"
         return res

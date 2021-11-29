@@ -8,25 +8,14 @@ class TestIntJoukko(unittest.TestCase):
         self.joukko.lisaa(10)
         self.joukko.lisaa(3)
 
-    def tee_joukko(self, *luvut):
+    @classmethod
+    def tee_joukko(cls, *luvut):
         joukko = IntJoukko()
 
         for luku in luvut:
             joukko.lisaa(luku)
 
         return joukko
-
-    def toimii_kasvatuksen_jalkeen(self, joukko):
-        lisattavat = [1, 2, 4, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-
-        for luku in lisattavat:
-            joukko.lisaa(luku)
-
-        self.assertEqual(joukko.mahtavuus(), 14)
-        self.assertTrue(joukko.kuuluu(11))
-        joukko.poista(11)
-        self.assertFalse(joukko.kuuluu(11))
-        self.assertEqual(joukko.mahtavuus(), 13)
 
     def test_lukuja_lisatty_maara(self):
         self.joukko.lisaa(4)
@@ -57,15 +46,6 @@ class TestIntJoukko(unittest.TestCase):
         vastaus = self.joukko.to_int_list()
 
         self.assertListEqual(sorted(vastaus), odotettu)
-
-    def test_toimii_kasvatuksen_jalkeen(self):
-        joukko_a = IntJoukko()
-        joukko_b = IntJoukko(8)
-        joukko_c = IntJoukko(10, 20)
-
-        self.toimii_kasvatuksen_jalkeen(joukko_a)
-        self.toimii_kasvatuksen_jalkeen(joukko_b)
-        self.toimii_kasvatuksen_jalkeen(joukko_c)
 
     def test_merkkijonoesitys_toimii(self):
         self.assertEqual(str(self.joukko), "{10, 3}")
