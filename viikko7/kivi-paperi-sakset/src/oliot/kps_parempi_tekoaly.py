@@ -1,7 +1,7 @@
-from kps_template import KPS as default_kp
+from kps_template import KPS as default_kps
 from tekoalyt.tekoaly_parannettu import TekoalyParannettu
 
-class KPSParempiTekoaly(default_kp):
+class KPSParempiTekoaly(default_kps):
     def __init__(self) -> None:
         self._tekoaly_parannettu = TekoalyParannettu(10)
 

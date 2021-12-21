@@ -1,7 +1,7 @@
-from kps_template import KPS as default_kp
+from kps_template import KPS as default_kps
 from tekoalyt.tekoaly import Tekoaly
 
-class KPSTekoaly(default_kp):
+class KPSTekoaly(default_kps):
     def __init__(self):
         self._tekoaly = Tekoaly()
 
