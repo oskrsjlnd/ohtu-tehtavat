@@ -2,7 +2,7 @@ from matchers import *
 
 class QueryBuilder:
     def __init__(self, query=All()):
-        self._query = query
+        self.queries = query
     
     def hasAtLeast(self, value, stats):
         return QueryBuilder(And(self._query, HasAtLeast(value, stats)))
@@ -17,7 +17,7 @@ class QueryBuilder:
         return QueryBuilder(Not(*matchers))
     
     def build(self):
-        return self._query
+        return self.queries
     
     def oneOf(self, *matchers):
         return QueryBuilder(Or(*matchers))
